@@ -1,15 +1,20 @@
 import React from 'react'
+import ListItem from './ListItem';
 
 const List = (props) => {
+
     const list = props.items.map((item, index) => {
         return (
-            <li className={item.done ? 'checked' : 'unchecked'} key={index}>
-                {item.name}
-                <button onClick={props.onDoneButton.bind(this, item.name)}>&#10004;</button>
-                <button onClick={props.onDeleteButton.bind(this, item.name)}>&#10060;</button>
-            </li>
+            <ListItem done={item.done}
+                      key={index}
+                      name={item.name}
+                      onDoneButton={props.onDoneButton}     
+                      onDeleteButton={props.onDeleteButton}       
+            />
         )
     })
+
+
 
     return (
         <ul>

@@ -5,7 +5,7 @@ import ToDoList from './components/ToDoList';
 class App extends Component {
   state = { 
     inputText: '',
-    todo: []
+    todo: [],
   }
 
   onInputChange = (e) => {
@@ -14,26 +14,6 @@ class App extends Component {
     })
   }
 
-  onSubmitForm = (inputText, e) => {
-
-    e.preventDefault();
-
-    let allDifferent = true;
-    this.state.todo.forEach(item => {
-      if(item.name === inputText) {
-        allDifferent = false;
-      }
-    })
-    
-    if(inputText.length > 0 && allDifferent ) {
-      this.setState((prevState) => {
-        return {
-          inputText: '',
-          todo: [...prevState.todo, {name: inputText, done: false}]
-        }
-      })
-    }
-  }
 
   onDoneButton = (targetItem, e) => {
     e.preventDefault();
@@ -55,12 +35,48 @@ class App extends Component {
   onDeleteButton = (targetItem, e) => {
     e.preventDefault();
 
-    this.setState((prevState) => {
+    this.setState(prevState => {
       const newArr = prevState.todo.filter(item => item.name !== targetItem)
       return {
         todo: newArr
       }
     })
+  }
+
+  onRemoveFinished = (e) => {
+    e.preventDefault();
+    
+    this.setState(prevState => {
+      const newArr = prevState.todo.filter(item => item.done === false)
+      
+      return {
+        todo: newArr
+      }
+      
+    })
+  }
+
+  
+  onSubmitForm = (inputText, e) => {
+
+    e.preventDefault();
+
+    // Validation
+    let allDifferent = true;
+    this.state.todo.forEach(item => {
+      if(item.name === inputText) {
+        allDifferent = false;
+      }
+    })
+    
+    if(inputText.length > 0 && allDifferent ) {
+      this.setState(prevState => {
+        return {
+          inputText: '',
+          todo: [...prevState.todo, {name: inputText, done: false}]
+        }
+      })
+    }
   }
 
   render() {
@@ -71,6 +87,7 @@ class App extends Component {
                 items={this.state.todo}
                 onDeleteButton={this.onDeleteButton}
                 onDoneButton={this.onDoneButton}
+                onRemoveFinished={this.onRemoveFinished}
       />
     );
   }

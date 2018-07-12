@@ -1,6 +1,7 @@
 import React from 'react'
 import Header from './Header';
 import List from './List';
+import RemoveButton from './RemoveButton';
 
 const ToDoList = (props) => {
     return (
@@ -13,6 +14,7 @@ const ToDoList = (props) => {
                   onDeleteButton={props.onDeleteButton}
                   onDoneButton={props.onDoneButton}
             />
+            {props.items.length > 0 && <RemoveButton onRemoveFinished={props.onRemoveFinished} />}
         </div>
     );
 }
