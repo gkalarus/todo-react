@@ -14,10 +14,8 @@ const List = (props) => {
         )
     })
 
-
-
     return (
-        <ul>
+        <ul className='list'>
             {list}
         </ul>
     );

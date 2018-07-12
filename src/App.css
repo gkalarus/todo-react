@@ -1,3 +1,94 @@
-.checked {
-  text-decoration: line-through;
-}
+#todo {
+  background-color: #FCE38A;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  border-radius: 8px;
+  width: 400px;
+  margin: 150px auto;
+  -webkit-box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.3);
+  box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.3);
+  padding: 30px; }
+  #todo .header h2 {
+    font-size: 30px;
+    color: #032A33;
+    text-align: center;
+    margin-bottom: 20px;
+    cursor: pointer;
+    background-image: -webkit-gradient(linear, left top, right top, from(#2998ff), to(#5643fa));
+    background-image: linear-gradient(to right, #2998ff, #5643fa);
+    -webkit-background-clip: text;
+    color: transparent;
+    letter-spacing: 2px;
+    -webkit-transition: all .2s;
+    transition: all .2s; }
+    #todo .header h2:hover {
+      -webkit-transform: skewY(2deg) skewX(15deg) scale(1.1);
+      transform: skewY(2deg) skewX(15deg) scale(1.1);
+      text-shadow: 0.5rem 1rem 2rem rgba(0, 0, 0, 0.2); }
+  #todo .header form {
+    display: flex;
+    flex-direction: column; }
+    #todo .header form input {
+      width: 100%;
+      padding: 12px 20px;
+      margin: 8px 0;
+      display: inline-block;
+      border: 1px solid #ccc;
+      border-radius: 12px;
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box; }
+    #todo .header form button {
+      background: -webkit-gradient(linear, left top, right top, from(#2998ff), to(#5643fa));
+      background: linear-gradient(to right, #2998ff, #5643fa);
+      border: none;
+      color: white;
+      padding: 15px 32px;
+      text-align: center;
+      font-size: 16px;
+      font-weight: 700;
+      border-radius: 12px;
+      cursor: pointer; }
+    #todo .header form p {
+      color: red; }
+  #todo .list {
+    padding: 0;
+    list-style-type: none; }
+    #todo .list li {
+      display: flex;
+      border-bottom: 1px solid black;
+      align-items: center;
+      justify-content: center; }
+      #todo .list li:first-child {
+        border-top: 1px solid black; }
+      #todo .list li p {
+        flex: 5;
+        min-width: 50%;
+        word-wrap: break-word; }
+        #todo .list li p.checked {
+          text-decoration: line-through;
+          color: grey; }
+      #todo .list li button {
+        height: 25px;
+        border: 1px solid #676767;
+        border-radius: 15%;
+        background: none;
+        margin: 0 15px 0 0;
+        color: #676767;
+        cursor: pointer;
+        text-align: center; }
+  #todo .removeBtn {
+    background-color: #D3504A;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 700;
+    border-radius: 12px;
+    cursor: pointer;
+    margin-top: 20px; }

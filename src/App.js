@@ -5,7 +5,9 @@ import ToDoList from './components/ToDoList';
 class App extends Component {
   state = { 
     inputText: '',
-    todo: [],
+    todo: [], 
+    empty: null,
+    duplicated: null
   }
 
   onInputChange = (e) => {
@@ -58,7 +60,6 @@ class App extends Component {
 
   
   onSubmitForm = (inputText, e) => {
-
     e.preventDefault();
 
     // Validation
@@ -73,9 +74,15 @@ class App extends Component {
       this.setState(prevState => {
         return {
           inputText: '',
-          todo: [...prevState.todo, {name: inputText, done: false}]
+          todo: [...prevState.todo, {name: inputText, done: false}],
+          empty: false,
+          duplicated: false
         }
       })
+    }else if(inputText.length === 0) {
+      this.setState({empty: true, duplicated: false})
+    }else {
+      this.setState({duplicated: true, empty: false})
     }
   }
 
@@ -88,6 +95,8 @@ class App extends Component {
                 onDeleteButton={this.onDeleteButton}
                 onDoneButton={this.onDoneButton}
                 onRemoveFinished={this.onRemoveFinished}
+                empty={this.state.empty}
+                duplicated={this.state.duplicated}
       />
     );
   }

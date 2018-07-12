@@ -2,7 +2,7 @@ import React from 'react'
 
 const RemoveButton = (props) => {
     return (
-        <button onClick={props.onRemoveFinished}>Remove finished tasks</button>
+        <button className='removeBtn' onClick={props.onRemoveFinished}>Remove finished tasks</button>
     );
 }
 
